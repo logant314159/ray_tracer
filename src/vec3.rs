@@ -1,4 +1,4 @@
-use std::ops::{Add, Sub, Index, Mul, Div, Neg};
+use std::ops::{Add, Sub, Index, IndexMut, Mul, Div, Neg};
 
 pub struct Vec3 {
     e: [f32; 3],
@@ -37,4 +37,9 @@ impl Sub for Vec3 {
 impl Index<usize> for Vec3 {
     type Output = f32;
     fn index(&self, index: usize) -> &f32 { &self.e[index] }
+}
+
+impl IndexMut<usize> for Vec3 {
+    type Output = f32;
+    fn index(&self, index: usize) -> f32 { &self.e[index] }
 }
