@@ -9,7 +9,7 @@ const IMAGE_WIDTH: i32 = 256;
 
 /// Converts the 0 -> 1 f32 values of a Vec3 into a usable PPM pixel string.
 fn make_pixel(pixel_color: Vec3) -> String {
-    format!("{} {} {}\n", 255.99 * pixel_color.x(), 255.99 * pixel_color.y(), 255.99 * pixel_color.z())
+    format!("{} {} {}\n", 255.99 * pixel_color[0], 255.99 * pixel_color[1], 255.99 * pixel_color[2])
 }
 
 fn generate_image() -> String {

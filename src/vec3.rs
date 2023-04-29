@@ -8,10 +8,6 @@ pub struct Vec3 {
 impl Vec3 {
     pub fn new(e0: f32, e1: f32, e2: f32) -> Vec3 { Vec3 { e: [e0, e1, e2] } }
 
-    pub fn x(&self) -> f32 { self.e[0] }
-    pub fn y(&self) -> f32 { self.e[1] }
-    pub fn z(&self) -> f32 { self.e[2] }
-
     pub fn length_squared(&self) -> f32 { self.e[0] * self.e[0] + self.e[1] * self.e[1] + self.e[2] * self.e[2] }
     pub fn length(&self) -> f32 { self.length_squared().sqrt() }
 }
@@ -112,14 +108,6 @@ mod tests {
         assert_eq!(v.e[0], 1.0);
         assert_eq!(v.e[1], 2.0);
         assert_eq!(v.e[2], 3.0);
-    }
-
-    #[test]
-    fn test_x_y_z() {
-        let v = Vec3::new(1.0, 2.0, 3.0);
-        assert_eq!(v.x(), 1.0);
-        assert_eq!(v.y(), 2.0);
-        assert_eq!(v.z(), 3.0);
     }
 
     #[test]
