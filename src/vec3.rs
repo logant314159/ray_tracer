@@ -41,8 +41,7 @@ impl Index<usize> for Vec3 {
 }
 
 impl IndexMut<usize> for Vec3 {
-    type Output = f32;
-    fn index(&self, index: usize) -> f32 { &self.e[index] }
+    fn index_mut(&mut self, index: usize) -> &mut f32 { &mut self.e[index] }
 }
 
 impl Mul<f32> for Vec3 {
@@ -58,7 +57,7 @@ impl Mul<f32> for Vec3 {
 
 impl Mul<Self> for Vec3 {
     type Output = Self;
-    fn mil(self, other: Self) -> Self {
+    fn mul(self, other: Self) -> Self {
         Self {
             e:  [self.e[0] * other.e[0],
                 self.e[1] * other.e[1],
@@ -125,9 +124,9 @@ mod tests {
         let v = Vec3::new(1.0, 2.0, 3.0);
         let b = Vec3::new(4.0, 5.0, 6.0);
         let vpb = v + b;
-        assert_eq!(vb.e[0], 5.0);
-        assert_eq!(vb.e[1], 7.0);
-        assert_eq!(vb.e[2], 9.0);
+        assert_eq!(vpb.e[0], 5.0);
+        assert_eq!(vpb.e[1], 7.0);
+        assert_eq!(vpb.e[2], 9.0);
     }
 
     #[test]
@@ -159,10 +158,10 @@ mod tests {
     #[test]
     fn test_mul_f32() {
         let v = Vec3::new(1.0, 2.0, 3.0);
-        let vm = v * 2;
-        assert_eq!(v.e[0], 2.0);
-        assert_eq!(v.e[1], 4.0);
-        assert_eq!(v.e[2], 6.0);
+        let vm = v * 2.0;
+        assert_eq!(vm.e[0], 2.0);
+        assert_eq!(vm.e[1], 4.0);
+        assert_eq!(vm.e[2], 6.0);
     }
 
     #[test]
@@ -178,7 +177,7 @@ mod tests {
     #[test]
     fn test_div_f32() {
         let v = Vec3::new(9.0, 3.0, 12.0);
-        let vd = v / 3;
+        let vd = v / 3.0;
         assert_eq!(vd.e[0], 3.0);
         assert_eq!(vd.e[1], 1.0);
         assert_eq!(vd.e[2], 4.0);
