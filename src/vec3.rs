@@ -1,6 +1,7 @@
 use std::ops::{Add, Sub, Index, IndexMut, Mul, Div, Neg};
 
 mod vec3 {
+    #[derive(Debug)]
     pub struct Vec3 {
         e: [f32; 3],
     }
