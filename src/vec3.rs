@@ -5,9 +5,11 @@ pub struct Vec3 {
 }
 
 impl Vec3 {
-    pub fn new(e0: f32, e1: f32, e2: f32) -> Vec3 {
-        Vec3 { e: [e0, e1, e2] }
-    }
+    pub fn new(e0: f32, e1: f32, e2: f32) -> Vec3 { Vec3 { e: [e0, e1, e2] } }
+
+    pub fn x(&self) -> f64 { self.e[0] }
+    pub fn y(&self) -> f64 { self.e[1] }
+    pub fn z(&self) -> f64 { self.e[2] }
 }
 
 impl Add for Vec3 {
