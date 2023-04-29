@@ -65,3 +65,25 @@ impl Mul<Self> for Vec3 {
         }
     }
 }
+
+impl Div<f32> for Vec3 {
+    type Output = Self;
+    fn div(self, other: f32) -> Self {
+        Self {
+            e: [self.e[0] / other,
+                self.e[1] / other,
+                self.e[2] / other]
+        }
+    }
+}
+
+impl Div<Self> for Vec3 {
+    type Output = Self;
+    fn div(self, other: Self) -> Self {
+        Self {
+            e:  [self.e[0] / other.e[0],
+                 self.e[1] / other.e[1],
+                 self.e[2] / other.e[2]]
+        }
+    }
+}
