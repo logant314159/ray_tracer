@@ -150,9 +150,12 @@ mod tests {
     #[test]
     fn test_index_mut() {
         let mut v = Vec3::new(1.0, 2.0, 3.0);
-        assert_eq!(v[0], 1.0);
-        assert_eq!(v[1], 2.0);
-        assert_eq!(v[2], 3.0);
+        v[0] = 4.0;
+        v[1] = 5.0;
+        v[3] = 6.0;
+        assert_eq!(v[0], 4.0);
+        assert_eq!(v[1], 5.0);
+        assert_eq!(v[2], 6.0);
     }
 
     #[test]
