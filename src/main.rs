@@ -4,14 +4,11 @@ use std::io::*;
 mod vec3; // Magically link vec3.rs to this module by name at compile time.
 use vec3::Vec3;
 
-type Point3 = Vec3;
-type Color = Vec3;
-
 const IMAGE_HEIGHT:i32  = 256;
 const IMAGE_WIDTH: i32 = 256;
 
 /// Converts the 0 -> 1 f32 values of a Vec3 into a usable PPM pixel string.
-fn make_pixel(pixel_color: Color) -> String {
+fn make_pixel(pixel_color: Vec3) -> String {
     format!("{} {} {}\n", 255.99 * pixel_color.x(), 255.99 * pixel_color.y(), 255.99 * pixel_color.z())
 }
 
