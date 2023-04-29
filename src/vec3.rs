@@ -43,3 +43,25 @@ impl IndexMut<usize> for Vec3 {
     type Output = f32;
     fn index(&self, index: usize) -> f32 { &self.e[index] }
 }
+
+impl Mul<f32> for Vec3 {
+    type Output = Self;
+    fn mul(self, other: f32) -> Self {
+        Self {
+            e: [self.e[0] * other,
+                self.e[1] * other,
+                self.e[2] * other]
+        }
+    }
+}
+
+impl Mul<Self> for Vec3 {
+    type Output = Self;
+    fn mil(self, other: Self) -> Self {
+        Self {
+            e:  [self.e[0] * other.e[0],
+                self.e[1] * other.e[1],
+                self.e[2] * other.e[2]]
+        }
+    }
+}
