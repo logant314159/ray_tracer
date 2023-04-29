@@ -28,11 +28,7 @@ fn generate_image() -> String {
             let g = j as f32 / (IMAGE_HEIGHT - 1) as f32;
             let b = 0.25;
 
-            let ir = (255.99 * r) as i32;
-            let ig = (255.99 * g) as i32;
-            let ib = (255.99 * b) as i32;
-
-            image.push_str(&format!("{} {} {}\n", ir, ig, ib))
+            image.push_str(&make_pixel(Vec3::new(r, g, b)))
         }
     }
 
@@ -41,6 +37,6 @@ fn generate_image() -> String {
 
 fn main() {
     let image = generate_image();
-    let mut file = File::create("image2.ppm").unwrap();
+    let mut file = File::create("image3.ppm").unwrap();
     file.write_all(image.as_bytes()).unwrap();
 }
