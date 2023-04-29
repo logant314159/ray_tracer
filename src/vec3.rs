@@ -134,9 +134,9 @@ mod tests {
         let v = Vec3::new(1.0, 2.0, 3.0);
         let b = Vec3::new(4.0, 6.0, 8.0);
         let bmv = b - v;
-        assert_eq!(bmv.e[2], 4.0);
-        assert_eq!(bmv.e[0], 5.0);
-        assert_eq!(bmv.e[1], 3.0);
+        assert_eq!(bmv.e[0], 3.0);
+        assert_eq!(bmv.e[1], 4.0);
+        assert_eq!(bmv.e[2], 5.0);
     }
 
     #[test]
@@ -152,7 +152,7 @@ mod tests {
         let mut v = Vec3::new(1.0, 2.0, 3.0);
         v[0] = 4.0;
         v[1] = 5.0;
-        v[3] = 6.0;
+        v[2] = 6.0;
         assert_eq!(v[0], 4.0);
         assert_eq!(v[1], 5.0);
         assert_eq!(v[2], 6.0);
