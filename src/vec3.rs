@@ -20,3 +20,14 @@ impl Add for Vec3 {
         }
     }
 }
+
+impl Sub for Vec3 {
+    type Output = Self;
+    fn sub(self, other: Self) -> Self {
+        Self {
+            e: [self.e[0] - other.e[0],
+                self.e[1] - other.e[1],
+                self.e[2] - other.e[2]]
+        }
+    }
+}
