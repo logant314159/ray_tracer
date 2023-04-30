@@ -39,6 +39,7 @@ impl Vec3 {
         }
     }
 
+    // This is specialized to f32 because that's the only way it's used. This is not a general purpose Vec3 struct.
     pub const fn const_div(&self, other: f32) -> Self {
         Self {
             e: [self.e[0] / other,
