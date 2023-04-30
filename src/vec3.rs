@@ -10,6 +10,10 @@ impl Vec3 {
 
     pub fn length_squared(&self) -> f32 { self.e[0] * self.e[0] + self.e[1] * self.e[1] + self.e[2] * self.e[2] }
     pub fn length(&self) -> f32 { self.length_squared().sqrt() }
+
+    pub fn unit_vector(&self) -> Self {
+        *self / self.length()
+    }
 }
 
 impl Add for Vec3 {
@@ -122,6 +126,16 @@ mod tests {
         let v = Vec3::new(3.0, 4.0, 0.0);
         let vl = v.length();
         assert_eq!(vl, 5.0);
+    }
+
+    #[test]
+    fn test_unit_vector() {
+        let v = Vec3::new(3.0, 4.0, 0.0);
+        let v = v.unit_vector();
+        assert_eq!(v.length(), 1.0);
+        assert_eq!(v.e[0], 0.6);
+        assert_eq!(v.e[1], 0.8);
+        assert_eq!(v.e[2], 0.0);
     }
 
     #[test]
