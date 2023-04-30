@@ -14,6 +14,38 @@ impl Vec3 {
     pub fn unit_vector(&self) -> Self {
         *self / self.length()
     }
+
+    pub const fn const_add(&self, other: &Self) -> Self {
+        Self {
+            e: [self.e[0] + other.e[0],
+                self.e[1] + other.e[1],
+                self.e[2] + other.e[2]]
+        }
+    }
+
+    pub const fn const_sub(&self, other: &Self) -> Self {
+        Self {
+            e:  [self.e[0] - other.e[0],
+                 self.e[1] - other.e[1],
+                 self.e[2] - other.e[2]]
+        }
+    }
+
+    pub const fn const_mul(&self, other: &Self) -> Self {
+        Self {
+            e: [self.e[0] * other.e[0],
+                self.e[1] * other.e[1],
+                self.e[2] * other.e[2]]
+        }
+    }
+
+    pub const fn const_div(&self, other: f32) -> Self {
+        Self {
+            e: [self.e[0] / other,
+                self.e[1] / other,
+                self.e[2] / other]
+        }
+    }
 }
 
 impl Add for Vec3 {
