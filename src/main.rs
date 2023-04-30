@@ -45,7 +45,7 @@ fn render(vert: Vec3, horz: Vec3, llc: Vec3) {
 }
 
 fn main() {
-    // I would love to make these constants but rust doesn't allow for floating-point operations at compile time.
+    // I would love to make these constants but rust doesn't allow for floating-point operations at compile time. Except for ASPECT_RATIO which we won't talk about.
     let vertical = Vec3::new(0.0, VIEWPORT_HEIGHT, 0.0);
     let horizontal = Vec3::new(VIEWPORT_WIDTH, 0.0, 0.0);
     let lower_left_corner = CAMERA_ORIGIN - horizontal / 2.0 - vertical / 2.0 - Vec3::new(0.0, 0.0, FOCAL_LENGTH);
