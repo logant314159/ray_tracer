@@ -2,7 +2,7 @@ use std::ops::{Add, Sub, Index, IndexMut, Mul, Div, Neg};
 
 #[derive(Debug, Copy, Clone)]
 pub struct Vec3 {
-    e: [f32; 3],
+    pub e: [f32; 3],
 }
 // TODO: write doc for this
 impl Vec3 {
