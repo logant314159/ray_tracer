@@ -15,11 +15,11 @@ impl Vec3 {
         *self / self.length()
     }
 
-    pub const fn const_add(&self, other: &Self) -> Self {
+    pub const fn const_add(&self, other: f32) -> Self {
         Self {
-            e: [self.e[0] + other.e[0],
-                self.e[1] + other.e[1],
-                self.e[2] + other.e[2]]
+            e: [self.e[0] + other,
+                self.e[1] + other,
+                self.e[2] + other]
         }
     }
 
