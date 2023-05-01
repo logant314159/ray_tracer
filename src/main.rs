@@ -31,8 +31,8 @@ fn color(r: &Ray, world: &HittableList) -> Vec3 {
 }
 
 fn render(world: HittableList) {
-    let w = 200;
-    let h = 100;
+    let w = 2000;
+    let h = 1000;
     let max_value = 255;
 
     let lower_left_corner = Vec3::new(-2.0, -1.0, -1.0);
@@ -43,7 +43,11 @@ fn render(world: HittableList) {
     let mut image_file = File::create("image.ppm").unwrap();
     image_file.write_all(format!("P3\n{} {}\n{}\n", w, h, max_value).as_bytes()).unwrap();
 
+    let mut stdout = stdout();
+
     for j in (0..h).rev() {
+        write!(stdout, "\rScanlines remaining: {}", j).unwrap();
+        stdout.flush().unwrap();
         for i in 0..w {
             let u = i as f32 / w as f32;
             let v = j as f32 / h as f32;
