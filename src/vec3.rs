@@ -11,9 +11,9 @@ impl Vec3 {
     pub fn length_squared(&self) -> f32 { self.e[0] * self.e[0] + self.e[1] * self.e[1] + self.e[2] * self.e[2] }
     pub fn length(&self) -> f32 { self.length_squared().sqrt() }
 
-    pub fn unit_vector(&self) -> Self {
-        *self / self.length()
-    }
+    pub fn unit_vector(&self) -> Self { *self / self.length() }
+
+    pub fn dot(&self, other: Self) -> f32 {  self.e[0] * other.e[0] + self.e[1] * other.e[1] + self.e[2] * other.e[2] }
 }
 
 impl Add for Vec3 {
