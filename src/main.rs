@@ -41,8 +41,8 @@ fn random_in_unit_sphere() -> Vec3 {
 }
 
 fn render(world: HittableList) {
-    let w = 400;
-    let h = 200;
+    let w = 2000;
+    let h = 1000;
     let samples = 100;
     let max_value = 255;
 
@@ -69,7 +69,8 @@ fn render(world: HittableList) {
             }
 
             col = col / samples as f32;
-
+            col = Vec3::new(col.r().sqrt(), col.g().sqrt(), col.b().sqrt());
+            
             let ir = (255.99 * col.r()) as i32;
             let ig = (255.99 * col.g()) as i32;
             let ib = (255.99 * col.b()) as i32;
