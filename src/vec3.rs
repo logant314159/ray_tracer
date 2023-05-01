@@ -51,6 +51,20 @@ impl Vec3 {
     }
 }
 
+impl ops::Neg for Vec3 {
+    type Output = Self;
+
+    fn neg(self) -> Self::Output {
+        Vec3 {
+            e: [
+                -self.e[0],
+                -self.e[1],
+                -self.e[2],
+            ]
+        }
+    }
+}
+
 impl ops::Add for Vec3 {
     type Output = Self;
 
