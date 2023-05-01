@@ -8,7 +8,7 @@ use ray::Ray;
 
 // Image dimensions.
 const ASPECT_RATIO: f32 = 16.0 / 9.0;
-const IMAGE_WIDTH: i32 = 256;
+const IMAGE_WIDTH: i32 = 1920;
 const IMAGE_HEIGHT: i32 = (IMAGE_WIDTH as f32 / ASPECT_RATIO) as i32;
 
 // Camera details.
