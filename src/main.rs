@@ -22,8 +22,24 @@ fn make_pixel(pixel_color: Vec3) -> String {
     format!("{} {} {}\n", 255.99 * pixel_color[0], 255.99 * pixel_color[1], 255.99 * pixel_color[2])
 }
 
+fn hit_sphere(center: Vec3, radius: f32, r: &Ray) -> f32 {
+    let oc = r.origin - center;
+    let a = r.direction.dot(r.direction);
+    let b = 2.0 * oc.dot(r.direction);
+    let c = oc.dot(oc) - radius * radius;
+    let discriminant = b * b - 4.0 * a * c;
+    if discriminant < 0.0 { return -1.0; }
+    else { return (-b - discriminant.sqrt()) / (2.0 * a);  }
+}
+
 /// For a given ray 
 fn ray_color(r: &Ray) -> Vec3 {
+    let t = hit_sphere(Vec3::new(0.0, 0.0, -1.0), 0.5, &r);
+    if t > 0.0 {
+        let n = (r.at(t) - Vec3::new(0.0, 0.0, -1.0)).unit_vector();
+        return Vec3::new(n.e[0] + 1.0, n.e[1] + 1.0, n.e[2] + 1.0) * 0.5;
+    }
+
     let unit_direction = r.direction.unit_vector();
     let t = 0.5 * (unit_direction[1] + 1.0);
     Vec3::new(1.0, 1.0, 1.0) * (1.0 - t) + Vec3::new(0.5, 0.7, 1.0) * t
