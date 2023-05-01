@@ -20,16 +20,23 @@ fn color(r: &Ray, world: &HittableList) -> Vec3 {
     let mut rec = HitRecord::default();
 
     if world.hit(&r, 0.0, std::f32::MAX, &mut rec) {
-        0.5 * Vec3::new(
-                rec.normal().x() + 1.0,
-                rec.normal().y() + 1.0,
-                rec.normal().z() + 1.0,
-            )
+        let target = rec.p() + rec.normal() + random_in_unit_sphere();
+        0.5 * color(&Ray::ray(rec.p(), target - rec.p()), &world)
     } else {
         let unit_direction = Vec3::unit_vector(&r.direction());
         let t = 0.5 * (unit_direction.y() + 1.0);
 
         Vec3::new(1.0, 1.0, 1.0) * (1.0 - t) + Vec3::new(0.5, 0.7, 1.0) * t
+    }
+}
+
+fn random_in_unit_sphere() -> Vec3 {
+    let mut p = Vec3::default();
+    let mut rng = rand::thread_rng();
+    
+    loop {
+        p = 2.0 * Vec3::new(rng.gen::<f32>(), rng.gen::<f32>(), rng.gen::<f32>()) - Vec3::new(1.0, 1.0, 1.0);
+        if p.squared_length() < 1.0 { return p; }
     }
 }
 
