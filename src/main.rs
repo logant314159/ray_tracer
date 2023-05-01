@@ -37,8 +37,8 @@ fn color(r: &Ray, world: &HittableList, depth: i32) -> Vec3 {
 }
 
 fn render(world: HittableList) {
-    let w = 2000;
-    let h = 1000;
+    let w = 800;
+    let h = 400;
     let samples = 100;
     let max_value = 255;
 
@@ -79,10 +79,11 @@ fn render(world: HittableList) {
 
 fn main() {
     let mut list: Vec<Box<dyn Hittable>> = Vec::new();
-    list.push(Box::new(Sphere::sphere(Vec3::new(0.0, 0.0, -1.0), 0.5, Material::Lambertian{albedo: Vec3::new(0.8, 0.3, 0.3)})));
+    list.push(Box::new(Sphere::sphere(Vec3::new(0.0, 0.0, -1.0), 0.5, Material::Lambertian{albedo: Vec3::new(0.1, 0.2, 0.5)})));
     list.push(Box::new(Sphere::sphere(Vec3::new(0.0, -100.5, -1.0), 100.0, Material::Lambertian{albedo: Vec3::new(0.8, 0.8, 0.0)})));
-    list.push(Box::new(Sphere::sphere(Vec3::new(1.0, 0.0, -1.0), 0.5, Material::Metal{albedo: Vec3::new(0.8, 0.6, 0.2), fuzz: 1.0})));
-    list.push(Box::new(Sphere::sphere(Vec3::new(-1.0, 0.0, -1.0), 0.5, Material::Metal{albedo: Vec3::new(0.8, 0.8, 0.8), fuzz: 0.1})));
+    list.push(Box::new(Sphere::sphere(Vec3::new(1.0, 0.0, -1.0), 0.5, Material::Metal{albedo: Vec3::new(0.8, 0.6, 0.2), fuzz: 0.3})));
+    list.push(Box::new(Sphere::sphere(Vec3::new(-1.0, 0.0, -1.0), 0.5, Material::Dielectric{ref_index: 1.5})));
+    list.push(Box::new(Sphere::sphere(Vec3::new(-1.0, 0.0, -1.0), -0.45, Material::Dielectric{ref_index: 1.5})));
     let world = HittableList::new(list);
 
     render(world);
