@@ -79,6 +79,16 @@ impl ops::Sub for Vec3 {
     }
 }
 
+impl ops::Mul for Vec3 {
+    type Output = Vec3;
+
+    fn mul(self, rhs: Self) -> Self::Output {
+        Vec3 {
+            e: [self.e[0] * rhs.e[0], self.e[1] * rhs.e[1], self.e[2] * rhs.e[2]],
+        }
+    }
+}
+
 impl ops::Mul<Vec3> for f32 {
     type Output = Vec3;
 
